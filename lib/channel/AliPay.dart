@@ -1,8 +1,8 @@
 import 'package:flutter/services.dart';
 
 class AliPay {
-
-  static const _API_PAY_METHOD_CHANNEL = 'com.sendroids.alipaytest/alipay.method';
+  static const _API_PAY_METHOD_CHANNEL =
+      'com.sendroids.alipaytest/alipay.method';
   static const _API_PAY_EVENT_CHANNEL = 'com.sendroids.alipaytest/alipay.event';
 
   static const _PAY_METHOD_NAME = 'pay';
@@ -14,9 +14,9 @@ class AliPay {
     _platform.invokeMethod(_PAY_METHOD_NAME);
   }
 
-  static void getPayResult() {
+  static void getPayResult(Function(dynamic data) function) {
     _eventChannel.receiveBroadcastStream().listen((event) {
-      print("It is Flutter -  receiveBroadcastStream $event");
+      function.call(event);
     });
   }
 }

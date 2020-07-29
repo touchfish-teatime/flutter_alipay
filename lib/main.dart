@@ -31,9 +31,8 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
   String result = "";
 
-
   void _incrementCounter() {
-    AliPay.getPayResult();
+    AliPay.getPayResult((data) => {print(data)});
     AliPay.pay();
   }
 
