@@ -55,8 +55,9 @@ class Pay(private var activity: Activity) {
 
     var sink: EventChannel.EventSink? = null
 
-    fun pay() {
+    private fun pay() {
 
+        // todo 应该从服务端获取 authInfo
         val rsa2: Boolean = RSA2_PRIVATE.isNotEmpty()
         val params: Map<String, String> = OrderInfoUtil.buildOrderParamMap(APPID, rsa2)
         val privateKey: String = if (rsa2) RSA2_PRIVATE else RSA_PRIVATE
